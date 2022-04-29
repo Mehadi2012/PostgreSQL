@@ -1,0 +1,8 @@
+-- TO_DATE function converts a string to a date
+
+SELECT TO_DATE('2022/04/19','YYYY/MM/DD');
+
+
+SELECT TO_DATE('2022-04-19','YYYY-MM-DD');
+
+SELECT TO_DATE('19042022','DDMMYYYY');
