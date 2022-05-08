@@ -1,0 +1,4 @@
+SELECT UPPER ('Mehadi Hasan');
+
+
+SELECT LOWER ('MEHADI HASAN');
