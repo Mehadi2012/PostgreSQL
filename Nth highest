@@ -1,0 +1,21 @@
+--Nth Highest Salary
+
+SELECT * FROM employee e1 WHERE 3-1 =(SELECT COUNT(DISTINCT(salary)) FROM employee e2 WHERE e2.salary>e1.salary)
+
+SELECT * FROM (SELECT emp_name,dept_name,salary, DENSE_RANK() OVER ( ORDER BY salary DESC)r FROM employee)tm
+WHERE tm.r=3;
+
+WITH CTE AS(
+SELECT emp_name AS Employee, dept_name AS Department, salary AS Salary, DENSE_RANK()OVER(ORDER BY salary DESC)r FROM employee)
+SELECT * FROM CTE WHERE r=3;
+
+SELECT * FROM employee
+
+
+--Nth Highest Salary group wise
+SELECT * FROM (SELECT emp_name,dept_name,salary, DENSE_RANK() OVER (PARTITION BY dept_name ORDER BY salary DESC)r FROM employee)tm
+WHERE tm.r<3;
+
+WITH CTE AS(
+SELECT emp_name AS Employee, dept_name AS Department, salary AS Salary, DENSE_RANK()OVER(PARTITION BY dept_name ORDER BY salary DESC)r FROM employee)
+SELECT * FROM CTE WHERE r=1;
